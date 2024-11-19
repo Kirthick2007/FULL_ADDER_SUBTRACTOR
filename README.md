@@ -37,19 +37,90 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
+full adder:
+
+![full adder tt](https://github.com/user-attachments/assets/bc37d0e7-65ce-435b-8077-a0ab6dd2ea32)
+
+
+full subtractor:
+
+![full-subtractor-truth-table](https://github.com/user-attachments/assets/d74bdc3b-3f39-41ec-be0a-21e35d8dcc6d)
+
+
 
 **Procedure**
 
-Write the detailed procedure here
+1. Type the program in quartus software.
+2. Compile and run the program.
+3. Generate the RTL schematic and save the logic diagram.
+4. Create nodes for the input and output to generate the timing diagram.
+5. For different input combination generate the timing diagram.
+
 
 **Program:**
+full adder:
+```
+module exp_4(sum,cout,a,b,cin);
+output sum;
+output cout;
+input a;
+input b;
+input cin;
+wire sl,cl,c2;
+xor(sl,a,b);
+and(cl,a,b);
+xor(sum,sl,cin);
+and(c2,sl,cin);
+or(cout,c2,cl);
+endmodule
+```
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+full subtractor:
+```
+module exp_4_1(df,bo,a,b,bin);
+output df;
+output bo;
+input a;
+input b;
+input bin;
+wire w1,w2,w3;
+assign w1=a^b;
+assign w2=(~a&b);
+assign w3=(~w1&bin);
+assign df=w1^bin;
+assign bo=w2|w3;
+endmodule
+```
+
+
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+Developed by: KIRTHICK SHA R RegisterNumber: 24900676
 */
 
 **RTL Schematic**
 
+full adder:
+
+![Screenshot 2024-11-12 111942](https://github.com/user-attachments/assets/6b49db3c-76e4-416c-bf56-bad4b91927e2)
+
+full subtractor :
+
+![Screenshot 2024-11-19 112233](https://github.com/user-attachments/assets/822384cb-eb5f-409c-8731-70ca219825f8)
+
+
+
+
 **Output Timing Waveform**
+full adder :
+
+![Screenshot 2024-11-12 112243](https://github.com/user-attachments/assets/c32ca58d-6ab7-4a7c-9af0-e6e3a1554c3f)
+
+full subtractor:
+
+![Screenshot 2024-11-19 113900](https://github.com/user-attachments/assets/cd79bfac-4414-4fc8-ba99-066e61f65794)
+
+
+
 
 **Result:**
 
